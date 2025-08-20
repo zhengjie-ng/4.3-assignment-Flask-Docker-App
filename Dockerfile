@@ -6,7 +6,9 @@ COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+COPY app.py .
+
+ENV FLASK_APP=app.py
 
 EXPOSE 5000
 
