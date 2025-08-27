@@ -19,23 +19,23 @@ jobs:
             pip install -r requirements.txt
       - python/save-cache
 
-    publish:
-      executor: docker/docker
-      steps:
-        - setup_remote_docker
-        - checkout
-        - docker/check:
-            docker-username: DOCKERHUB_LOGIN
-            docker-password: DOCKERHUB_PASSWORD
-        - docker/build:
-            image: nzj002/flask-docker-app
-        - docker/push:
-            image: nzj002/flask-docker-app
+    # publish:
+    #   executor: docker/docker
+    #   steps:
+    #     - setup_remote_docker
+    #     - checkout
+    #     - docker/check:
+    #         docker-username: DOCKERHUB_LOGIN
+    #         docker-password: DOCKERHUB_PASSWORD
+    #     - docker/build:
+    #         image: nzj002/flask-docker-app
+    #     - docker/push:
+    #         image: nzj002/flask-docker-app
 
     workflows:
       build_and_publish:
         jobs:
           - build
-          - publish:
-              requires:
-                - build
+          # - publish:
+          #     requires:
+          #       - build
